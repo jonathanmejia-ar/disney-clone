@@ -1,35 +1,28 @@
 import React from 'react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectTrending } from '../features/movie/movieSlice';
 
 const Trending = () => {
+    const movies = useSelector(selectTrending);
+
     return (
         <Container>
             <h4>Trending</h4>
             <Content>
-                <Wrap>
-                    <Link to="/">
-                        <img src='https://www.melomanodigital.com/wp-content/uploads/2020/11/CINE-267-INSIDE-OUT-1-1024x1024.jpg' alt="" />
-                    </Link>
-                </Wrap>
-
-                <Wrap>
-                    <Link to="/">
-                        <img src='https://www.melomanodigital.com/wp-content/uploads/2020/11/CINE-267-INSIDE-OUT-1-1024x1024.jpg' alt="" />
-                    </Link>
-                </Wrap>
-
-                <Wrap>
-                    <Link to="/">
-                        <img src='https://www.melomanodigital.com/wp-content/uploads/2020/11/CINE-267-INSIDE-OUT-1-1024x1024.jpg' alt="" />
-                    </Link>
-                </Wrap>
-
-                <Wrap>
-                    <Link to="/">
-                        <img src='https://www.melomanodigital.com/wp-content/uploads/2020/11/CINE-267-INSIDE-OUT-1-1024x1024.jpg' alt="" />
-                    </Link>
-                </Wrap>
+                {
+                    movies && movies.map((movie, index) => {
+                        return (
+                            <Wrap key={index}>
+                                {movie.id}
+                                <Link to={`/detail/${movie.id}`}>
+                                    <img src={movie.cardImg} alt={movie.title} />
+                                </Link>
+                            </Wrap>
+                        )
+                    })
+                }
             </Content>
         </Container>
     )
