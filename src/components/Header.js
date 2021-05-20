@@ -1,16 +1,32 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 import styled from 'styled-components';
 import { auth, provider } from '../firebase';
+import { selectUserEmail, selectUserName, selectUserPhoto, setUserLoginDetails } from '../features/user/userSlice';
 
 const Header = () => {
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const username = useSelector(selectUserName);
+    const userPhoto = useSelector(selectUserPhoto);
 
     const handleAuth = () => {
         auth.signInWithPopup(provider)
             .then(result => {
-                console.log(result);
+                setUser(result.user);
             }).catch(error => {
                 alert(error.message);
             })
+    };
+
+    const setUser = (user) => {
+        dispatch(setUserLoginDetails({
+            name: user.displayName,
+            email: user.email,
+            photo: user.photoURL
+        }));
     };
 
     return (
@@ -18,33 +34,41 @@ const Header = () => {
             <Logo>
                 <img src="/images/logo.svg" alt="disney-logo" />
             </Logo>
-            <NavMenu>
-                <a href="/home">
-                    <img src="/images/home-icon.svg" alt="home-icon" />
-                    <span>HOME</span>
-                </a>
-                <a>
-                    <img src="/images/search-icon.svg" alt="search-icon" />
-                    <span>SEARCH</span>
-                </a>
-                <a >
-                    <img src="/images/watchlist-icon.svg" alt="watchlist-icon" />
-                    <span>WATCHLIST</span>
-                </a>
-                <a >
-                    <img src="/images/original-icon.svg" alt="original-icon" />
-                    <span>ORIGINALS</span>
-                </a>
-                <a >
-                    <img src="/images/movie-icon.svg" alt="movies-icon" />
-                    <span>MOVIES</span>
-                </a>
-                <a >
-                    <img src="/images/series-icon.svg" alt="series-icon" />
-                    <span>SERIES</span>
-                </a>
-            </NavMenu>
-            <Login onClick={handleAuth}>Login</Login>
+            {
+                !username ?
+                    <Login onClick={handleAuth}>Login</Login>
+                    :
+                    <>
+                        <NavMenu>
+                            <a href="/home">
+                                <img src="/images/home-icon.svg" alt="home-icon" />
+                                <span>HOME</span>
+                            </a>
+                            <a>
+                                <img src="/images/search-icon.svg" alt="search-icon" />
+                                <span>SEARCH</span>
+                            </a>
+                            <a >
+                                <img src="/images/watchlist-icon.svg" alt="watchlist-icon" />
+                                <span>WATCHLIST</span>
+                            </a>
+                            <a >
+                                <img src="/images/original-icon.svg" alt="original-icon" />
+                                <span>ORIGINALS</span>
+                            </a>
+                            <a >
+                                <img src="/images/movie-icon.svg" alt="movies-icon" />
+                                <span>MOVIES</span>
+                            </a>
+                            <a >
+                                <img src="/images/series-icon.svg" alt="series-icon" />
+                                <span>SERIES</span>
+                            </a>
+                        </NavMenu>
+                        <UserImg src={userPhoto} alt={username} />
+
+                    </>
+            }
         </Nav>
     );
 };
@@ -160,4 +184,8 @@ const Login = styled.a`
         cursor: pointer;
     }
 
+`;
+
+const UserImg = styled.img`
+    height: 100%;
 `;
