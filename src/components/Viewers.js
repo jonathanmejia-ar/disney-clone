@@ -12,21 +12,15 @@ const Viewers = () => {
                 </video>
             </Wrap>
             <Wrap>
-                <img src="/images/viewers-marvel.png" alt="" />
-                <video autoPlay={true} loop={true} playsInline={true}>
-                    <source src='/videos/marvel.mp4' type='video/mp4' />
-                </video>
-            </Wrap>
-            <Wrap>
-                <img src="/images/viewers-national.png" alt="" />
-                <video autoPlay={true} loop={true} playsInline={true}>
-                    <source src='/videos/national.mp4' type='video/mp4' />
-                </video>
-            </Wrap>
-            <Wrap>
                 <img src="/images/viewers-pixar.png" alt="" />
                 <video autoPlay={true} loop={true} playsInline={true}>
                     <source src='/videos/pixar.mp4' type='video/mp4' />
+                </video>
+            </Wrap>
+            <Wrap>
+                <img src="/images/viewers-marvel.png" alt="" />
+                <video autoPlay={true} loop={true} playsInline={true}>
+                    <source src='/videos/marvel.mp4' type='video/mp4' />
                 </video>
             </Wrap>
             <Wrap>
@@ -35,9 +29,15 @@ const Viewers = () => {
                     <source src='/videos/star-wars.mp4' type='video/mp4' />
                 </video>
             </Wrap>
+            <Wrap>
+                <img src="/images/viewers-national.png" alt="" />
+                <video autoPlay={true} loop={true} playsInline={true}>
+                    <source src='/videos/national.mp4' type='video/mp4' />
+                </video>
+            </Wrap>
         </Container>
     )
-}
+};
 
 export default Viewers;
 
