@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
+import { Link } from 'react-router-dom';
 
 const ImgSlider = () => {
     let settings = {
@@ -17,27 +18,27 @@ const ImgSlider = () => {
     return (
         <Carousel {...settings}>
             <Wrap>
-                <a>
+                <Links to="#">
                     <img src="/images/slider-badging.jpg" alt="" />
-                </a>
+                </Links>
             </Wrap>
 
             <Wrap>
-                <a>
+                <Links to="#">
                     <img src="/images/slider-scale.jpg" alt="" />
-                </a>
+                </Links>
             </Wrap>
 
             <Wrap>
-                <a>
+                <Links to="#">
                     <img src="/images/slider-badag.jpg" alt="" />
-                </a>
+                </Links>
             </Wrap>
 
             <Wrap>
-                <a>
+                <Links to="#">
                     <img src="/images/slider-scales.jpg" alt="" />
-                </a>
+                </Links>
             </Wrap>
         </Carousel>
     );
@@ -58,7 +59,7 @@ const Carousel = styled(Slider)`
             transition: opacity 0.2s ease 0s;
         }
     }
-    ul > li > button{
+    ul li button{
         &:before{
             font-size: 10px;
             color: rgb(150,158,171);
@@ -83,12 +84,14 @@ const Carousel = styled(Slider)`
 
 `;
 
+const Links = styled(Link)``;
+
 const Wrap = styled.div`
     border-radius: 4px;
     cursor: pointer;
     position: relative;
 
-    a{
+    ${Links}{
         border-radius: 4px;
         box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px, 
         rgb(0 0 0 / 73%) 0px 16px 10px -10px;
@@ -105,7 +108,7 @@ const Wrap = styled.div`
         &:hover {
             padding: 0;
             border: 4px solid rgba(249,249,249,0.8);
-            transition-duration: 300ms;
+            transition-duration: 0.2s;
         }
     }
 `;
