@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { auth, provider } from '../firebase';
 import { selectUserName, selectUserPhoto, setSignOutState, setUserLoginDetails } from '../features/user/userSlice';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -47,8 +48,6 @@ const Header = () => {
         }));
     };
 
-
-
     return (
         <Nav>
             <Logo>
@@ -60,30 +59,30 @@ const Header = () => {
                     :
                     <>
                         <NavMenu>
-                            <a href="/home">
+                            <Links to="/home">
                                 <img src="/images/home-icon.svg" alt="home-icon" />
                                 <span>HOME</span>
-                            </a>
-                            <a>
+                            </Links>
+                            <Links to="#">
                                 <img src="/images/search-icon.svg" alt="search-icon" />
                                 <span>SEARCH</span>
-                            </a>
-                            <a >
+                            </Links>
+                            <Links to="#">
                                 <img src="/images/watchlist-icon.svg" alt="watchlist-icon" />
                                 <span>WATCHLIST</span>
-                            </a>
-                            <a >
+                            </Links>
+                            <Links to="#">
                                 <img src="/images/original-icon.svg" alt="original-icon" />
                                 <span>ORIGINALS</span>
-                            </a>
-                            <a >
+                            </Links>
+                            <Links to="#">
                                 <img src="/images/movie-icon.svg" alt="movies-icon" />
                                 <span>MOVIES</span>
-                            </a>
-                            <a >
+                            </Links>
+                            <Links to="#">
                                 <img src="/images/series-icon.svg" alt="series-icon" />
                                 <span>SERIES</span>
-                            </a>
+                            </Links>
                         </NavMenu>
                         <SignOut>
                             <UserImg src={userPhoto} alt={username} />
@@ -91,7 +90,6 @@ const Header = () => {
                                 <span onClick={handleAuth}>Sign out</span>
                             </DropDown>
                         </SignOut>
-
                     </>
             }
         </Nav>
@@ -111,7 +109,6 @@ const Nav = styled.nav`
     justify-content: space-between;
     align-items: center;
     padding: 0 36px;
-    letter-spacing: 16px;
     z-index: 3;
 `;
 
@@ -120,7 +117,6 @@ const Logo = styled.div`
     width: 80px;
     margin-top: 4px;
     max-height: 70px;
-    font-size: 0;
     display: inline-block;
 
     img{
@@ -129,19 +125,19 @@ const Logo = styled.div`
     }
 `;
 
+const Links = styled(Link)`
+`;
+
 const NavMenu = styled.div`
+    height: 100%;
+    margin-right: auto;
+    margin-left: 25px;
     display: flex;
     align-items: center;
     flex-flow: row nowrap;
-    height: 100%;
     justify-content: flex-end;
-    margin: 0px;
-    padding: 0px;
-    position: relative;
-    margin-right: auto;
-    margin-left: 25px;
 
-    a {
+    ${Links} {
         display: flex;
         align-items: center;
         padding: 0 12px;
@@ -150,7 +146,6 @@ const NavMenu = styled.div`
             height: 20px;
             min-width: 20px;
             width: 20px;
-            z-index: auto;
         }
 
         span{
