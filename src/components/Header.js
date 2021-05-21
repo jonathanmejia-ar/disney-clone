@@ -149,6 +149,7 @@ const NavMenu = styled.div`
         }
 
         span{
+            margin-left: 4px;
             color: rgb(249,249,249);
             font-size: 13px;
             letter-spacing: 1.42px;
