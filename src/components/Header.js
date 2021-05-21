@@ -50,7 +50,7 @@ const Header = () => {
 
     return (
         <Nav>
-            <Logo>
+            <Logo to="/home">
                 <img src="/images/logo.svg" alt="disney-logo" />
             </Logo>
             {
@@ -112,7 +112,7 @@ const Nav = styled.nav`
     z-index: 3;
 `;
 
-const Logo = styled.div`
+const Logo = styled(Link)`
     padding: 0;
     width: 80px;
     margin-top: 4px;
