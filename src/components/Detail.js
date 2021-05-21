@@ -5,10 +5,9 @@ import { useParams } from 'react-router';
 import styled from 'styled-components';
 import db from '../firebase';
 
-const Detail = (props) => {
+const Detail = () => {
     const [detailData, setDetailData] = useState({});
     let { id: movieId } = useParams();
-
 
     useEffect(() => {
         db.collection('movies').doc(movieId).get().then((doc => {
@@ -62,10 +61,10 @@ export default Detail;
 
 const Container = styled.div`
     position: relative;
-    min-height: calc(100vh - 250px);
+    min-height: calc(100vh - 70px);
     overflow-x: hidden;
     display: block;
-    top: 72px;
+    top: 70px;
     padding: 0 calc(3.5vw + 5px);
 `;
 
@@ -76,11 +75,12 @@ const Background = styled.div`
     z-index: -1;
 
     img{
-        height: 100vh;
-        width: 100vw;
+        height: 100%;
+        width: 100%;
 
         @media (max-width:768px){
-            width: initial;
+            object-fit: cover;
+
         }
     }
 `;
@@ -88,7 +88,6 @@ const Background = styled.div`
 const ImageTitle = styled.div`
     display: flex;
     align-items: flex-end;
-    justify-content: flex-start;
     margin: 0px auto;
     height: 50vh;
     min-height: 170px;
