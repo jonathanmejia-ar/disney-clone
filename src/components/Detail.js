@@ -73,7 +73,7 @@ const Background = styled.div`
     position: fixed;
     inset: 0px;
     opacity: 0.8;
-    z-index:-1;
+    z-index: -1;
 
     img{
         height: 100vh;
@@ -90,7 +90,7 @@ const ImageTitle = styled.div`
     align-items: flex-end;
     justify-content: flex-start;
     margin: 0px auto;
-    height: 30vh;
+    height: 50vh;
     min-height: 170px;
     padding-bottom: 24px;
     width: 100%;
