@@ -22,24 +22,24 @@ const Home = () => {
     let originals = [];
     let trending = [];
 
+    const selectCategory = {
+        'recommend': (doc) => {
+            recommends.push({ id: doc.id, ...doc.data() });
+        },
+        'new': (doc) => {
+            newDisney.push({ id: doc.id, ...doc.data() });
+        },
+        'original': (doc) => {
+            originals.push({ id: doc.id, ...doc.data() });
+        },
+        'trending': (doc) => {
+            trending.push({ id: doc.id, ...doc.data() });
+        }
+    };
+
     useEffect(() => {
-        const selectCat = {
-            'recommend': (doc) => {
-                recommends.push({ id: doc.id, ...doc.data() });
-            },
-            'new': (doc) => {
-                newDisney.push({ id: doc.id, ...doc.data() });
-            },
-            'original': (doc) => {
-                originals.push({ id: doc.id, ...doc.data() });
-            },
-            'trending': (doc) => {
-                trending.push({ id: doc.id, ...doc.data() });
-            }
-        };
         db.collection('movies').onSnapshot((snapshot) => {
-            snapshot.docs.map(doc => selectCat[doc.data().type](doc));
-            console.log(recommends);
+            snapshot.docs.map(doc => selectCategory[doc.data().type](doc));
 
             dispatch(setMovies({
                 recommend: recommends,
@@ -67,18 +67,9 @@ export default Home;
 
 const Container = styled.main`
     position: relative;
-    min-height: calc(100vh - 250px);
+    top: 70px;
+    min-height: 100vh;
+    padding: 0 25px;
     overflow-x: hidden;
-    display: block;
-    top: 72px;
-    padding: 0 calc(3.5vw + 5px);
-
-    &:after{
-        background: url('/images/home-background.png') center center / cover no-repeat fixed;
-        content: '';
-        position: absolute;
-        inset: 0px;
-        opacity: 1;
-        z-index: -1;
-    }
+    background: url('/images/home-background.png') center center / cover no-repeat fixed;
 `;
