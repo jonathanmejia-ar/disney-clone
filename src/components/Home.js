@@ -10,7 +10,7 @@ import Originals from './Originals';
 import Recommends from './Recommends';
 import Trending from './Trending';
 import Viewers from './Viewers';
-import { selectRecommend, setMovies } from '../features/movie/movieSlice';
+import { setMovies } from '../features/movie/movieSlice';
 import { selectUserName } from '../features/user/userSlice';
 
 

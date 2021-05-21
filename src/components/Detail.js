@@ -1,10 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import styled from 'styled-components';
-import { selectRecommend } from '../features/movie/movieSlice';
 import db from '../firebase';
 
 const Detail = (props) => {
