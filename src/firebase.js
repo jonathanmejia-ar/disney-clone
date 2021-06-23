@@ -1,7 +1,9 @@
 import firebase from 'firebase';
 
+const firebaseApiKey = process.env.REACT_APP_FIREBASE_APIKEY;
+
 var firebaseConfig = {
-    apiKey: "AIzaSyBdh_8p2at6QDUxsVqFfpPqnwqwDJONcxQ",
+    apiKey: firebaseApiKey,
     authDomain: "disney-clone-347ff.firebaseapp.com",
     projectId: "disney-clone-347ff",
     storageBucket: "disney-clone-347ff.appspot.com",
